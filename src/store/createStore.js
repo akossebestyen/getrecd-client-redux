@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
+import persistState from 'redux-localstorage'
 import makeRootReducer from './reducers'
 
 export default (initialState = {}, history) => {
@@ -19,6 +20,8 @@ export default (initialState = {}, history) => {
       enhancers.push(devToolsExtension())
     }
   }
+  // uncomment these lines if you want to persist state to local storage
+  // enhancers.push(persistState())
 
   // ======================================================
   // Store Instantiation and HMR Setup

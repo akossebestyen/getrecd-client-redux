@@ -11,7 +11,7 @@ export const TournamentsList = (props) => (
     <div className="col-md-12">
         <h3>Tourney List</h3>
         {props.tournaments.map(function(tournament){
-            return <div className={classes.tournamentListItem}>
+            return <div className={classes.tournamentListItem} key={tournament.tournamentName}>
                         <h4>{tournament.tournamentName}</h4>
                         <p><span>Pools</span> {tournament.numOfPools}</p>
                         <p><span>Teams</span> {tournament.numOfTeams}</p>

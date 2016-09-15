@@ -1,5 +1,6 @@
 import React from 'react'
 import TournamentsForm from './TournamentsForm'
+import TeamList from './TeamList'
 import classes from './Tournaments.scss'
 
 export const TournamentsList = (props) => (
@@ -13,7 +14,7 @@ export const TournamentsList = (props) => (
         {props.tournaments.map(function(tournament){
             return <div className={classes.tournamentListItem} key={tournament.tournamentName}>
                         <h4>{tournament.tournamentName}</h4>
-                        <p><span>Teams</span> {tournament.tournamentTeams.size}</p>
+                        <TeamList teams={tournament.tournamentTeams} />
                     </div>
         })}
     </div>

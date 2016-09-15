@@ -61,7 +61,7 @@ const Team = Record({
 const GenerateTeams = (numOfTeams) => {
   let tms = [];
   for(let i = 0; i < numOfTeams; i++) {
-    tms.push(new Team({id: uniqueId(), teamName: 'Team' + i}))
+    tms.push(new Team({id: uniqueId(), teamName: 'Team ' + i}))
   }
   return tms
 }

@@ -24,7 +24,7 @@ export const TournamentsList = (props) => (
 )
 
 TournamentsList.propTypes = {
-    tournaments : React.PropTypes.array.isRequired,
+    tournaments : React.PropTypes.object.isRequired,
     onSubmit : React.PropTypes.func.isRequired
 }
 

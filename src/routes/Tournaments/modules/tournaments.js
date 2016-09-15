@@ -1,3 +1,5 @@
+import { Map, List } from 'immutable'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -22,13 +24,13 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [ADD_TOURNAMENT] : (state, action) => state.concat(action.payload) 
+  [ADD_TOURNAMENT] : (state, action) => state.push(action.payload) 
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = []
+const initialState = List()
 export default function tournamentReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 

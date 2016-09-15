@@ -4,8 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 const validate = values => {
   const errors = {};
   if(!values.tournamentName) errors.tournamentName = 'Required';
-  if(!values.numOfPools) errors.numOfPools = 'Required';
-  if(!values.numOfTeams) errors.numOfPools = 'Required';
+  if(!values.numOfTeams) errors.numOfTeams = 'Required';
   return errors; 
 }
 
@@ -17,10 +16,6 @@ class TournamentsForm extends Component {
         <div>
           <label htmlFor="firstName">Tournament Name</label>
           <Field className="form-control" name="tournamentName" component="input" type="text"/>
-        </div>
-        <div>
-          <label htmlFor="lastName">Number of Pools</label>
-          <Field className="form-control" name="numOfPools" component="input" type="number"/>
         </div>
         <div>
           <label htmlFor="email">Number of Teams</label>

@@ -13,8 +13,7 @@ export const TournamentsList = (props) => (
         {props.tournaments.map(function(tournament){
             return <div className={classes.tournamentListItem} key={tournament.tournamentName}>
                         <h4>{tournament.tournamentName}</h4>
-                        <p><span>Pools</span> {tournament.numOfPools}</p>
-                        <p><span>Teams</span> {tournament.numOfTeams}</p>
+                        <p><span>Teams</span> {tournament.tournamentTeams.size}</p>
                     </div>
         })}
     </div>

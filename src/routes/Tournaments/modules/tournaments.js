@@ -19,6 +19,10 @@ export function addTournament (data) {
   }
 }
 
+export const getTournament = (state, id) => {
+    return state.tournaments.find((t) => {return t.id === id})
+}
+
 export const actions = {
   addTournament
 }

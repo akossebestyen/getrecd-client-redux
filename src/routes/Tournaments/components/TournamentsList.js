@@ -1,6 +1,8 @@
 import React from 'react'
 import TournamentsForm from './TournamentsForm'
+import TeamList from './TeamList'
 import classes from './Tournaments.scss'
+import { Link } from 'react-router'
 
 export const TournamentsList = (props) => (
   <div className="row">
@@ -12,9 +14,9 @@ export const TournamentsList = (props) => (
         <h3>Tourney List</h3>
         {props.tournaments.map(function(tournament){
             return <div className={classes.tournamentListItem} key={tournament.tournamentName}>
-                        <h4>{tournament.tournamentName}</h4>
-                        <p><span>Pools</span> {tournament.numOfPools}</p>
-                        <p><span>Teams</span> {tournament.numOfTeams}</p>
+                        <Link to={'/tournaments/' + tournament.id} activeClassName={classes.activeRoute}>
+                            {tournament.tournamentName}
+                        </Link>
                     </div>
         })}
     </div>
@@ -24,7 +26,7 @@ export const TournamentsList = (props) => (
 )
 
 TournamentsList.propTypes = {
-    tournaments : React.PropTypes.array.isRequired,
+    tournaments : React.PropTypes.object.isRequired,
     onSubmit : React.PropTypes.func.isRequired
 }
 

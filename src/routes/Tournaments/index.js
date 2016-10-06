@@ -1,4 +1,4 @@
-import { injectReducer } from '../../store/reducers'
+import { makeRootReducer, injectReducer } from '../../store/reducers'
 
 export default (store) => ({
   path : 'tournaments',
@@ -11,10 +11,14 @@ export default (store) => ({
           dependencies for bundling   */
       const TournamentsList = require('./containers/TournamentsListContainer').default
       const reducer = require('./modules/tournaments').default
+      const teamsReducer = require('./modules/teams').default
 
       /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'tournaments', reducer })
-
+      store.asyncReducers['tournaments'] = reducer
+      store.asyncReducers['teams'] = teamsReducer
+      
+      store.replaceReducer(makeRootReducer(store.asyncReducers))
+      // injectReducer(store, {key: 'tournaments', reducer})
       /*  Return getComponent   */
       cb(null, TournamentsList)
 

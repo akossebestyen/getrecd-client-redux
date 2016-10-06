@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { addTournament, getTournament } from '../modules/tournaments'
+import { getTeamsByTournament } from '../modules/teams'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -16,7 +17,8 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    tournament : getTournament(state, ownProps.params.tournamentId)
+    tournament : getTournament(state, ownProps.params.tournamentId),
+    teams: getTeamsByTournament(state, ownProps.params.tournamentId)
 })
 
 

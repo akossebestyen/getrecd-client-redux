@@ -1,10 +1,10 @@
 import React from 'react';
 import TeamList from './TeamList'
-const TournamentView = ({tournament}) => {
+const TournamentView = ({tournament, teams}) => {
     return (
         <div>
             <h4>{tournament.tournamentName}</h4>
-            <TeamList teams={tournament.tournamentTeams} />
+            <TeamList teams={teams} />
         </div>
     );
 };

@@ -11,16 +11,11 @@ export const ADD_TOURNAMENT = 'ADD_TOURNAMENT'
 // ------------------------------------
 
 export function addTournament (data) {
-  let tms = fromJS(GenerateTeams(data.numOfTeams))
-  let t = new Tournament({tournamentName:data.tournamentName, id: uniqueId(), tournamentTeams: tms})
+  let t = new Tournament({tournamentName:data.tournamentName, id: uniqueId(), tournamentTeams: new List()})
   return {
     type    : ADD_TOURNAMENT,
-    payload : t
+    payload : {[t.id]: t}
   }
-}
-
-export const getTournament = (state, id) => {
-    return state.tournaments.find((t) => {return t.id === id})
 }
 
 export const actions = {
@@ -31,13 +26,13 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [ADD_TOURNAMENT] : (state, action) => state.push(action.payload) 
+  [ADD_TOURNAMENT] : (state, action) => state.merge(action.payload) 
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = List()
+const initialState = Map()
 export default function tournamentReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
@@ -53,19 +48,14 @@ const Tournament = Record({
   tournamentTeams: List()
 })
 
-const Team = Record({
-  id: undefined,
-  teamName: ''
-})
-
 // ------------------------------------
 // Helpers
 // ------------------------------------
 
-const GenerateTeams = (numOfTeams) => {
-  let tms = [];
-  for(let i = 0; i < numOfTeams; i++) {
-    tms.push(new Team({id: uniqueId(), teamName: 'Team ' + i}))
-  }
-  return tms
+export const getTournaments = (state) => {
+  return state.tournaments.toList()
+}
+
+export const getTournament = (state, id) => {
+  return state.tournaments.get(id)
 }
